@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Controle de Despesas</title>
+
+</head>
+<body>
+<header>
+  <div class="wrapper">
+    <div class="c-monthyear">
+
+    <div class="c-month" id="year-div">
+      <span id="prev_year" class="prev fa fa-angle-left" aria-hidden="true" (click)="goToPrevYear()"></span>
+      <span class="c-paginator__year" id="year-span"></span>
+      <span id="next_year" class="next fa fa-angle-right" aria-hidden="true" (click)="goToNextYear()"></span>
+    </div>
+    <div class="c-month">
+        <span id="prev" class="prev fa fa-angle-left" aria-hidden="true"></span>
+        <div id="c-paginator">
+          <span class="c-paginator__month">JANEIRO</span>
+          <span class="c-paginator__month">FEVEREIRO</span>
+          <span class="c-paginator__month">MARÇO</span>
+          <span class="c-paginator__month">ABRIL</span>
+          <span class="c-paginator__month">MAIO</span>
+          <span class="c-paginator__month">JUNHO</span>
+          <span class="c-paginator__month">JULHO</span>
+          <span class="c-paginator__month">AGOSTO</span>
+          <span class="c-paginator__month">SETEMBRO</span>
+          <span class="c-paginator__month">OUTUBRO</span>
+          <span class="c-paginator__month">NOVEMBRO</span>
+          <span class="c-paginator__month">DEZEMBRO</span>
+        </div>
+        <span id="next" class="next fa fa-angle-right" aria-hidden="true"></span>
+    </div>
+      
+    </div>
+
+  </div>
+</header>
+<div class="wrapper">
+  <div class="c-calendar">
+    <div class="c-calendar__style c-aside">
+      <a class="c-add o-btn js-event__add" href="javascript:;">Adicionar Despesa <span class="fa fa-plus"></span></a>
+      <div class="c-aside__day">
+        <span class="c-aside__num" ></span><span class="c-aside__month"></span>
+      </div>
+      <div class="c-aside__eventList">
+      </div>
+    </div>
+    <div id="calendar-div" class="c-cal__container c-calendar__style">
+    
+    </div>
+  </div>
+
+  <div class="c-event__creator c-calendar__style js-event__creator">
+    <a href="javascript:;" class="o-btn js-event__close">FECHAR <span class="fa fa-close"></span></a>
+    <form id="addEvent">
+      <input type="hidden" id="idBill" name="Id" value="0">
+      <input placeholder="Nome Despesa" type="text" name="name" id="expenseName">
+      <input type="date" name="dateBill" id="dateBill">
+      <textarea placeholder="Observações" name="notes" cols="30" rows="10" id="comments"></textarea>
+      
+      <!-- bill updload file-->
+      <div class="file-upload-download">
+        <!--updload file-->
+        <div class="container-file-input">
+          <label class="btn" for="fileUpload">
+              <span class="file-input-text" id="bill-file-input-text">Selecione um documento para a despesa</span>
+              <span>Procurar</span>
+          </label>
+          <input type="file" id="fileUpload" (change)="onFileSelected($event,'bill')" title="">
+          
+        </div>
+        <i class="fa fa-download" aria-hidden="true" id="download-bill-pdf" (click)="pdfDownload('bill')"></i>
+      </div>
+      <select name="tags" id="categories">
+      </select>
+      <div class="div-checkbox-form">
+        <input type="checkbox" id="paid" name="paid" value="true" class="paid-class" value="paid">
+        <label for="paid"> Conta paga?</label>
+      </div>
+      <!-- proof payment updload file-->
+      <div class="file-upload-download" id="proof-payment-file-upload-download">
+        <!--updload file-->
+        <div class="container-file-input">
+          <label for="proofPaymentfileUpload" class="btn">
+              <span class="file-input-text" id="proof-payment-file-input-text">Selecione um comprovante para a despesa</span>
+              <span>Procurar</span>
+          </label>
+          <input type="file" id="proofPaymentfileUpload" (change)="onFileSelected($event,'proofPayment')" title="">
+          
+        </div>
+        <i class="fa fa-download" aria-hidden="true" id="download-proof-payment-pdf" (click)="pdfDownload('proofPayment')"></i>
+      </div>
+
+    </form>
+    <a class="o-btn js-event__save" (click)="ManagerBill()"> <span class="fa fa-save"></span></a>
+  </div>
+</div>
+
+</body>
+</html>
